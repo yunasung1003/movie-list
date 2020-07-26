@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
-
+  const [text, setText] = useState('Kossie');
   const onSubmit = () => {
     alert('submitted');
   };
@@ -12,10 +12,25 @@ function App() {
     }
   }
 
+  // let text = 'Kossie';
+
+  const updateText = () => {
+    // text = 'Coder';
+    setText('Coder')
+    console.log(text)
+  }
+
+  console.log(text)
+
   return (
     <div className="App">
       <input onKeyUp={onKeyUp} />
       <button onClick={onSubmit}>Submit</button>
+
+      <br /><br />
+
+      <span>{text}</span>
+      <button onClick={updateText}>Update</button>
     </div>
   );
 }
