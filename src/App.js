@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log(username, password);
+  const [text, setText] = useState('Kossie');
+  const [name, setName] = useState('Name');
+
+  const updateText = () => {
+    setText('Coder');
   };
 
+  useEffect(() => {
+    console.log('always', name)
+    document.title = name;
+  });
+
+  useEffect(() => {
+    console.log('name updated')
+  }, []);
   return (
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <input 
-          type="text"
-          placeholder="Username" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-        /><br />
-        <input 
-          type="password"
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-        /><br />
-        <button type="submit">Login</button>
-      </form>
+      {text} <br />
+      <button onClick={updateText}>Update</button><br />
+      {name} <br />
+      <button onClick={() => setName('Name Updated')}>Update</button>
     </div>
   );
 }
