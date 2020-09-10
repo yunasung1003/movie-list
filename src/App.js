@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [text, setText] = useState('Kossie');
-  const [name, setName] = useState('Name');
-
-  const updateText = () => {
-    setText('Coder');
-  };
+  const [count, setCount] = useState(0);
+  const [kossie, setKossie] = useState(0);
+  useEffect(() => {
+    console.log(count)
+  }, [count, kossie])
 
   useEffect(() => {
-    console.log('always', name)
-    document.title = name;
-  });
-
-  useEffect(() => {
-    console.log('name updated')
+    console.log('first rendering')
   }, []);
+  const increment = () => {
+    setCount(count + 1);
+  };
   return (
     <div className="App">
-      {text} <br />
-      <button onClick={updateText}>Update</button><br />
-      {name} <br />
-      <button onClick={() => setName('Name Updated')}>Update</button>
+      <h1>Kossie Coder</h1>
+      <button onClick={increment}>Click</button>
+      <button onClick={() => setKossie(kossie + 1)}>Click1</button>
     </div>
   );
 }
